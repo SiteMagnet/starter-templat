@@ -1,0 +1,171 @@
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+  }
+
+  .hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(246, 246, 246, 0.5);
+    transition: 0.3s ease;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    padding: 0 15px;
+  }
+
+  .cta-container {
+    margin-top: 20px;
+  }
+
+  .cta-button {
+    background-color: #155eef;
+    color: white;
+    padding: 12px 24px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background-color: #003cbf;
+  }
+
+  /* Booking Container */
+  .booking-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 750px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    height: 500px;
+    text-align: center;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  /* Close Button */
+  .close-booking {
+    position: absolute;
+    top: 400px;
+    right: 30px;
+    background: red;
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 70px;
+  }
+
+  /* Iframe Wrapper */
+  .iframe-wrapper {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  /* Adjust iframe appearance */
+  .booking-iframe {
+    width: 100%;
+    height: 65vh;
+    border: none;
+    border-radius: 8px;
+    background: white;
+    transform: scale(0.9);
+    transform-origin: top left;
+
+  }
+
+  /* Larger screens */
+  @media (min-width: 768px) {
+    .booking-container {
+      max-width: 850px;
+    }
+
+    .booking-iframe {
+      height: 75vh;
+    }
+  }
+
+  /* 📱 Mobile Styles */
+  @media (max-width: 600px) {
+    .hero {
+      height: 80vh; /* Adjusted height for better fit */
+      padding: 0 10px;
+    }
+
+    .hero-content {
+      max-width: 90%;
+      font-size: 14px;
+    }
+
+    .cta-button {
+      font-size: 16px;
+      padding: 10px 20px;
+    }
+
+    .booking-container {
+      width: 90%;
+      height: 90vh;
+      padding: 15px;
+    }
+
+    .close-booking {
+      top: 20px;
+      height: 700px;
+      right: 1px;
+      padding: 1px;
+      width: 40px;
+      font-size: 14px;
+
+    }
+
+    .booking-iframe {
+      height: 85vh;
+      transform: scale(1);
+      width: 100%;
+    margin-right: 60px;
+    padding: 7px;
+    overflow-y: hidden;
+    }
+  }
