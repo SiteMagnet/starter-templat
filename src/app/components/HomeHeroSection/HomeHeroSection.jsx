@@ -1,27 +1,11 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import './HomeHeroSection.css'; // adjust path based on your folder structure
+import { useState } from 'react';
+import './HomeHeroSection.css';
+import BookingModal from  '../BookingModal'; // adjust path if needed
 
 export default function HomeHeroSection() {
   const [showBooking, setShowBooking] = useState(false);
-  const bookingContainerRef = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        bookingContainerRef.current &&
-        !bookingContainerRef.current.contains(event.target)
-      ) {
-        setShowBooking(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
 
   return (
     <section className="hero">
@@ -47,22 +31,7 @@ export default function HomeHeroSection() {
         </div>
       </div>
 
-      {showBooking && (
-        <div className="booking-container" ref={bookingContainerRef}>
-          <button className="close-booking" onClick={() => setShowBooking(false)}>
-            Close
-          </button>
-
-          <div className="iframe-wrapper">
-            <iframe
-              src="https://api.leadconnectorhq.com/widget/booking/jcILtSg9gF3jD9wnKohK"
-              className="booking-iframe"
-              scrolling="yes"
-              title="Booking Calendar"
-            ></iframe>
-          </div>
-        </div>
-      )}
+      {showBooking && <BookingModal onClose={() => setShowBooking(false)} />}
     </section>
   );
 }

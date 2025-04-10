@@ -2,7 +2,7 @@
 .hero {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 100vh; /* Full height on mobile */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,6 +19,7 @@
     height: 100%;
     object-fit: cover;
     z-index: -1;
+    opacity: 0.7; /* Reduced opacity to make text stand out more */
   }
 
   .overlay {
@@ -27,7 +28,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(246, 246, 246, 0.5);
+    background: rgba(255, 255, 255, 0.5); /* Lightened white overlay */
     transition: 0.3s ease;
   }
 
@@ -36,6 +37,27 @@
     z-index: 2;
     max-width: 600px;
     padding: 0 15px;
+    background: linear-gradient(rgba(22, 22, 22, 0.055), rgba(0, 0, 0, 0.3)); /* Subtle gradient behind text */
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-heading {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #000; /* Dark text for better readability */
+    margin-bottom: 20px;
+    letter-spacing: 1px;  /* Slightly increased letter spacing for a refined look */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); /* Soft, blurred shadow for depth */
+  }
+
+  .hero-subheading {
+    font-size: 1.5rem;
+    font-weight: 500; /* Slightly lighter for the subheading */
+    color: #333; /* Darker shade for less emphasis */
+    line-height: 1.6;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3); /* Soft shadow for the subheading */
   }
 
   .cta-container {
@@ -77,24 +99,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
   }
 
   /* Close Button */
   .close-booking {
     position: absolute;
-    top: 400px;
-    right: 30px;
+    top: 15px;
+    right: 15px;
     background: red;
     color: white;
     border: none;
-    padding: 15px;
+    padding: 10px;
     cursor: pointer;
     border-radius: 5px;
-    width: 70px;
+    font-size: 14px;
   }
 
-  /* Iframe Wrapper */
   .iframe-wrapper {
     padding: 10px;
     width: 100%;
@@ -104,7 +124,6 @@
     overflow: hidden;
   }
 
-  /* Adjust iframe appearance */
   .booking-iframe {
     width: 100%;
     height: 65vh;
@@ -113,11 +132,31 @@
     background: white;
     transform: scale(0.9);
     transform-origin: top left;
-
   }
 
   /* Larger screens */
   @media (min-width: 768px) {
+    .hero {
+      height: 70vh; /* Adjusted height for larger screens */
+
+    }
+
+    .hero-heading {
+      font-size: 3.5rem;
+    }
+    .hero-content{
+        padding: 20px;
+    }
+
+    .hero-subheading {
+      font-size: 1.25rem;
+    }
+
+    .cta-button {
+      padding: 15px 30px;
+      font-size: 20px;
+    }
+
     .booking-container {
       max-width: 850px;
     }
@@ -130,13 +169,23 @@
   /* 📱 Mobile Styles */
   @media (max-width: 600px) {
     .hero {
-      height: 80vh; /* Adjusted height for better fit */
-      padding: 0 10px;
+      height: 69vh; /* Adjusted height for better fit on mobile */
     }
 
     .hero-content {
-      max-width: 90%;
+      max-width: 100%;
       font-size: 14px;
+      padding: 20px; /* Ensure padding for better content fitting */
+    }
+
+    .hero-heading {
+      font-size: 2.5rem; /* Adjusted size for mobile */
+      line-height: 1.4;
+    }
+
+    .hero-subheading {
+      font-size: 1.2rem; /* Adjusted size for mobile */
+      margin-bottom: 20px;
     }
 
     .cta-button {
@@ -152,20 +201,15 @@
 
     .close-booking {
       top: 20px;
-      height: 700px;
-      right: 1px;
-      padding: 1px;
+      right: 20px;
+      font-size: 12px;
       width: 40px;
-      font-size: 14px;
-
     }
 
     .booking-iframe {
       height: 85vh;
       transform: scale(1);
       width: 100%;
-    margin-right: 60px;
-    padding: 7px;
-    overflow-y: hidden;
+      padding: 7px;
     }
   }

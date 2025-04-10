@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import "./Navigation.css"
+import './Navigation.css';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,27 +15,27 @@ export default function Navigation() {
     <nav className="navbar">
       <div className="navbar-left">
         <Link href="/">
-          <span className="brand">SiteMagnet</span>
+          <h1 className="brand">SiteMagnet</h1>
         </Link>
       </div>
 
-      {/* Center Menu */}
       <div className={`navbar-center ${isMenuOpen ? 'open' : ''}`}>
         <ul>
           <li><a href="#how-it-works">How It Works</a></li>
           <li><a href="#our-work">Our Work</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="#faqs">FAQs</a></li>
-          <li>
-            <Link href="/dashboard">
-              <button className="get-started-btn">Get Started</button>
-            </Link>
-          </li>
         </ul>
       </div>
 
+      <div className={`navbar-right ${isMenuOpen ? 'open' : ''}`}>
+        <Link href="/dashboard">
+          <button className="get-started-btn">Get Started</button>
+        </Link>
+      </div>
+
       {/* Hamburger Icon */}
-      <div className="hamburger" onClick={handleMenuToggle}>
+      <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={handleMenuToggle}>
         <div className={`line ${isMenuOpen ? 'open' : ''}`}></div>
         <div className={`line ${isMenuOpen ? 'open' : ''}`}></div>
         <div className={`line ${isMenuOpen ? 'open' : ''}`}></div>
