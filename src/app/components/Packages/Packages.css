@@ -1,0 +1,162 @@
+.packages {
+    padding: 50px 20px; /* Adjusted padding for smaller screens */
+    background-color: #f4f4f4;
+    text-align: center;
+  }
+
+  .packages-heading {
+    font-size: 32px; /* Slightly reduced for mobile readability */
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+  }
+
+  .packages-description {
+    font-size: 16px;
+    margin-bottom: 30px;
+    color: #333;
+  }
+  .feature-text{
+    color: #333;
+  }
+
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    justify-items: center;
+    margin-top: 30px;
+  }
+
+  .package-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 350px;
+    transition: all 0.3s ease;
+  }
+
+  .package-card.middle-card {
+    background-color: #f5deb3;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+  }
+
+  .package-number {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+  .feature-icon{
+    color: #3498db;
+}
+
+  .package-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+    display: block;
+  }
+
+  .package-heading {
+    font-size: 22px;
+    font-weight: normal;
+    margin-top: 10px;
+    color: #333;
+  }
+
+  .package-features {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+
+  .package-features li {
+    font-size: 15px;
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center align text for mobile */
+  }
+
+  .Space {
+    margin-left: 8px;
+  }
+
+  .cta-button {
+    background-color: #3498db;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 15px;
+  }
+
+  .book-call-link {
+    display: block;
+    text-align: center;
+    margin-top: 8px;
+    font-size: 14px;
+    color: #3498db;
+    text-decoration: none;
+  }
+
+  /* Mobile-specific styles */
+  @media screen and (max-width: 768px) {
+    .packages {
+      padding: 40px 15px;
+    }
+
+    .packages-heading {
+      font-size: 28px;
+    }
+
+    .packages-description {
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    .packages-grid {
+      grid-template-columns: 1fr; /* Stack packages on top of each other */
+    }
+
+    .package-card {
+      padding: 18px;
+    }
+
+    .package-number {
+      font-size: 14px;
+      top: 10px;
+      left: 10px;
+    }
+
+    .package-price {
+      font-size: 16px;
+    }
+
+    .package-heading {
+      font-size: 20px;
+    }
+
+    .package-features li {
+      font-size: 14px;
+    }
+
+    .cta-button {
+      font-size: 14px;
+      padding: 10px;
+    }
+
+    .book-call-link {
+      font-size: 13px;
+    }
+  }
