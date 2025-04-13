@@ -32,12 +32,12 @@ export default function Plan() {
             <h3>4. Launch & Support</h3>
             <p>We’ll launch your site and provide ongoing support to ensure success.</p>
           </div>
-        </div>
-        <div className="cta-button">
-          <Link href="/dashboard" passHref>
-            <button id="our-work">Start Your Journey</button>
-          </Link>
-        </div>
+        </div><Link href="/dashboard" >
+        <div className="cta-button" id="our-work">Start Your Journey
+
+           
+
+        </div></Link>
       </div>
     </section>
   );

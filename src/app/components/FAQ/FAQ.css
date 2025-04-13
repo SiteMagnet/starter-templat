@@ -8,7 +8,12 @@
     padding: 5% 8%;
     text-align: center;
   }
-
+.faq-heading{
+  color: #333;
+}
+.faq-answer{
+  color: #333;
+}
   .story-content {
     max-width: 90%;
     text-align: left;
