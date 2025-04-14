@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import JourneyTab from "../components/JourneyTab";
 import AnalyticsTab from "../components/AnalyticsTab";
 import BillingTab from "../components/BillingTab";
@@ -30,6 +31,9 @@ const Dashboard = () => {
       <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
         <nav>
           <ul className="sidebar-list">
+            <li className="sidebar-logo">
+              <Link href="/">SiteMagnet</Link>
+            </li>
             <li>
               <button
                 onClick={() => setActiveTab("journey")}
