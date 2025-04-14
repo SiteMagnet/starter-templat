@@ -1,44 +1,59 @@
-'use client'; // Only needed if you're using the App Router in Next.js 13+
-
 import React from 'react';
+import './Plan.css'; // Make sure to link the CSS file
 import Link from 'next/link';
-import { FaHandshake, FaClipboardList, FaDesktop, FaRocket } from 'react-icons/fa';
-import './Plan.css';
 
-export default function Plan() {
+const PlanSection = () => {
   return (
     <section className="plan-section">
       <div className="plan-content">
-        <h1>How It Works</h1>
-        <p className="summary-text">Our process is simple and designed to get you results quickly.</p>
+        <h1>How Our Plan Works</h1>
+        <p className="summary-text">
+          Follow these simple steps to get started with our service. We’ve made it easy, quick, and convenient for you.
+        </p>
+
         <div className="steps-container">
-          <div className="step">
-            <FaHandshake className="step-icon" />
-            <h3>1. Consultation</h3>
-            <p>We’ll discuss your business goals and challenges.</p>
+          {/* Row 1: First Two Steps */}
+          <div className="steps-row">
+            <div className="step">
+              <div className="step-icon">📝</div>
+              <h3>Step 1: Sign Up</h3>
+              <p>Create your account in just a few clicks. No credit card required.</p>
+            </div>
+            <div className="step">
+              <div className="step-icon">📄</div>
+              <h3>Step 2: Choose Plan</h3>
+              <p>Select the plan that fits your needs and unlock premium features.</p>
+            </div>
           </div>
-          <div className="step">
-            <FaClipboardList className="step-icon" />
-            <h3>2. Strategy Session</h3>
-            <p>We’ll craft a strategy to convert visitors into clients.</p>
-          </div>
-          <div className="step">
-            <FaDesktop className="step-icon" />
-            <h3>3. Design & Build</h3>
-            <p>We’ll design and build a website that supports your business growth.</p>
-          </div>
-          <div className="step">
-            <FaRocket className="step-icon" />
-            <h3>4. Launch & Support</h3>
-            <p>We’ll launch your site and provide ongoing support to ensure success.</p>
-          </div>
-        </div><Link href="/dashboard" >
-        <div className="cta-button" id="our-work">Start Your Journey
 
-           
+          {/* Row 2: Next Three Steps */}
+          <div className="steps-row">
+            <div className="step">
+              <div className="step-icon">🚀</div>
+              <h3>Step 3: Get Started</h3>
+              <p>Kick off your journey with our guided onboarding process.</p>
+            </div>
+            <div className="step">
+              <div className="step-icon">🔧</div>
+              <h3>Step 4: Customize</h3>
+              <p>Tailor the experience to your goals and preferences.</p>
+            </div>
+            <div className="step">
+              <div className="step-icon">📈</div>
+              <h3>Step 5: Grow</h3>
+              <p>Track your progress and scale effortlessly over time.</p>
+            </div>
+          </div>
+        </div>
 
-        </div></Link>
+
+        <Link href="/Login">
+    <button className="cta-button">Get Started Today</button>
+  </Link>
+
       </div>
     </section>
   );
-}
+};
+
+export default PlanSection;

@@ -10,7 +10,12 @@
   margin-bottom: 15px;
   color: #333;
 }
-
+.book-call-link{
+  margin-left: 120px;
+}
+.book-call-link:hover{
+  cursor: pointer;
+}
 .package-tagline {
   font-style: italic;
   font-size: 14px;
@@ -193,7 +198,7 @@ box-shadow: none;
   padding: 14px;
   text-align: left;
   background-color: #ddd;
-  
+
 }
 
 .comparison-table th {

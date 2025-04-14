@@ -35,7 +35,7 @@ const Packages = () => {
             <li><FaCheck className="feature-icon" /> Dashboard access to track performance</li>
             <li><FaCheck className="feature-icon" /> Marketing optional – DIY-friendly</li>
           </ul>
-          <Link href="/dashboard">
+          <Link href="/Login">
             <button className="cta-button">Get Started</button>
           </Link>
           <button className="book-call-link" onClick={toggleBookingModal}>Book a Call</button>
@@ -56,7 +56,7 @@ const Packages = () => {
             <li><FaCheck className="feature-icon" /> Performance dashboard with conversion metrics</li>
             <li><FaCheck className="feature-icon" /> Ongoing support & growth partnership</li>
           </ul>
-          <Link href="/dashboard">
+          <Link href="/Login">
             <button className="cta-button">Get Started</button>
           </Link>
           <button className="book-call-link" onClick={toggleBookingModal} >Book a Call</button>
