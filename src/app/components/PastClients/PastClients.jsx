@@ -8,7 +8,16 @@ export default function PastClients() {
       <p className="past-clients-heading">Some of our past clients</p>
       <div className="client-names">
         <div className="client-name">
-          <p>Google</p>
+          <p>
+            <a
+              href="https://amerindnation.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="client-link"
+            >
+              Amerind Nation
+            </a>
+          </p>
         </div>
         <div className="client-name">
           <p>Amazon</p>
