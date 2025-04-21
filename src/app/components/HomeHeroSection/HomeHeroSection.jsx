@@ -1,11 +1,11 @@
 'use client';
+import Link from 'next/link';
 
-import { useState } from 'react';
 import './HomeHeroSection.css';
-import BookingModal from  '../BookingModal'; // adjust path if needed
+
 
 export default function HomeHeroSection() {
-  const [showBooking, setShowBooking] = useState(false);
+
 
   return (
     <section className="hero">
@@ -14,7 +14,7 @@ export default function HomeHeroSection() {
         Your browser does not support the video tag.
       </video>
 
-      <div className={`overlay ${showBooking ? 'active' : ''}`}></div>
+      <div className=''></div>
 
       <div className="hero-content">
         <h1 className="hero-heading">
@@ -25,13 +25,16 @@ export default function HomeHeroSection() {
           build a professional, lead-generating website that grows your business.
         </p>
         <div className="cta-container">
-          <button className="cta-button" onClick={() => setShowBooking(true)}>
+        <Link href="/Login">
+          <button className="cta-button" >
             Get Started
           </button>
+        </Link>
+
         </div>
       </div>
 
-      {showBooking && <BookingModal onClose={() => setShowBooking(false)} />}
+
     </section>
   );
 }

@@ -1,5 +1,6 @@
 'use client';
-import "./AuthForm.css"
+
+import "./AuthForm.css";
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '../../../lib/supabaseClient';
@@ -21,45 +22,56 @@ const AuthForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isMounted) return;
+    setMessage('');
 
-    let result;
+    try {
+      let result;
 
-    if (isLogin) {
-      result = await supabase.auth.signInWithPassword({ email, password });
-    } else {
-      result = await supabase.auth.signUp({ email, password });
-      if (result.error) {
-        setMessage(result.error.message);
-        return;
-      }
+      if (isLogin) {
+        // Log in flow
+        result = await supabase.auth.signInWithPassword({ email, password });
 
-      const { user } = result.data;
-      const { error } = await supabase.from('users').insert([
-        {
-          auth_id: user.id,
+        if (result.error) {
+          setMessage('Login error: ' + result.error.message);
+          return;
+        }
+      } else {
+        // Sign up flow (just auth)
+       const {error} = await supabase.auth.signUp({
           email,
-          full_name: fullName,
-          brand_stage: 1,
-        },
-      ]);
+          password,
+          options: {
+            data: { display_name: fullName }, // optional user metadata
+          },
+        });
 
-      if (error) {
-        setMessage('Error inserting user data: ' + error.message);
-        return;
+        // console.log("Sign-up result:", result);
+
+        if (error) {
+          console.error(error)
+          setMessage('Sign-up error: ' + error.message);
+          return;
+        }
+
+        // if (!result.data.user) {
+        //   setMessage('Sign-up succeeded but no user object returned.');
+        //   return;
+        // }
       }
-    }
 
-    if (result.error) {
-      setMessage(result.error.message);
-    } else {
+      // Redirect on success
       router.push('/dashboard');
+    } catch (err) {
+      console.error('Unexpected error:', err);
+      setMessage('Unexpected error: ' + err.message);
     }
   };
 
   return (
     <div className="auth-form">
-         <h1>SiteMagnet</h1>
+      <h1>SiteMagnet</h1>
       <h2>{isLogin ? 'Login' : 'Sign Up'}</h2>
+
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -68,6 +80,7 @@ const AuthForm = () => {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
+
         <input
           type="password"
           placeholder="Password"
@@ -75,6 +88,7 @@ const AuthForm = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+
         {!isLogin && (
           <input
             type="text"
@@ -84,12 +98,19 @@ const AuthForm = () => {
             required
           />
         )}
-        <button type="submit">{isLogin ? 'Log In' : 'Sign Up'}</button>
+
+        <button type="submit">
+          {isLogin ? 'Log In' : 'Sign Up'}
+        </button>
       </form>
 
-      <p>{message}</p>
+      {message && <p className="auth-message">{message}</p>}
 
-      <button onClick={() => setIsLogin(!isLogin)}>
+      <button
+        type="button"
+        className="toggle-auth-mode"
+        onClick={() => setIsLogin(!isLogin)}
+      >
         {isLogin ? 'Need to sign up?' : 'Already have an account? Log in'}
       </button>
     </div>

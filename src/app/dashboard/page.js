@@ -1,6 +1,7 @@
 "use client";
-import { supabase } from "@/lib/supabaseClient"
-import React, { useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import JourneyTab from "../components/JourneyTab";
 import AnalyticsTab from "../components/AnalyticsTab";
@@ -11,6 +12,22 @@ import "./Dashboard.css";
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("journey");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const router = useRouter();
+
+  // 🔐 Redirect if not logged in
+  useEffect(() => {
+    const checkUser = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (!session) {
+        router.replace("/Login");
+      }
+    };
+
+    checkUser();
+  }, [router]);
 
   const renderTab = () => {
     switch (activeTab) {
@@ -71,7 +88,6 @@ const Dashboard = () => {
         </nav>
       </aside>
 
-      {/* Sidebar toggle button for mobile */}
       <button
         className="sidebar-toggle"
         onClick={() => setSidebarOpen(!sidebarOpen)}
