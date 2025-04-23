@@ -118,14 +118,32 @@ const BrandStory = ({ userId }) => {
   const handleSubmit = async () => {
     if (!formData) return;
 
-    const { error } = await supabase
+    // First, update the brand_story_forms table
+    const { error: formError } = await supabase
       .from('brand_story_forms')
       .update({ is_submitted: true })
       .eq('id', formData.id);
 
-    if (!error) alert('Brand story submitted!');
-    else console.error(error);
+    if (formError) {
+      console.error("Failed to submit brand story form:", formError);
+      return;
+    }
+
+    // Then, update the user's brand_stage to 2
+    const { error: userError } = await supabase
+      .from('users') // or 'public.user' depending on your schema
+      .update({ brand_stage: 2 })
+      .eq('id', userId); // you're already receiving this as a prop
+
+    if (userError) {
+      console.error("Failed to update user's brand_stage:", userError);
+      return;
+    }
+
+    alert('Brand story submitted and stage advanced!');
   };
+
+
 
   if (loading || !formData) return <p className="text-center mt-10">Loading brand story...</p>;
 
