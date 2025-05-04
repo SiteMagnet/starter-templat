@@ -6,6 +6,7 @@ import BrandStory from "../BrandStory";
 import WebDesignIntake from "../WebDesignIntake";
 import BookingModal from "../BookingModal";
 import ContractAgreement from "../ContractAgreement";
+import Payment from "../Payment";
 
 const JourneyTab = () => {
   const [fullName, setFullName] = useState(null);
@@ -85,10 +86,11 @@ const JourneyTab = () => {
   </>
 )}
 {brandStage === 4 && userId && <ContractAgreement userId={userId} />}
+{brandStage === 5 && userId && <Payment userId={userId} />}
 
-      {brandStage > 4 && (
+      {brandStage > 5 && (
         <p className="text-gray-600">
-          You're past Step 3. More steps coming soon!
+          You're past Step 5. More steps coming soon!
         </p>
       )}
     </div>
