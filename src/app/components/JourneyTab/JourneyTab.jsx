@@ -7,11 +7,14 @@ import WebDesignIntake from "../WebDesignIntake";
 import BookingModal from "../BookingModal";
 import ContractAgreement from "../ContractAgreement";
 import Payment from "../Payment";
-
+import { fetchBrandStoryData } from "@/app/utils/supabaseHelpers";
 const JourneyTab = () => {
   const [fullName, setFullName] = useState(null);
   const [brandStage, setBrandStage] = useState(null);
   const [userId, setUserId] = useState(null); // ← ADD THIS
+  
+
+
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -41,6 +44,8 @@ const JourneyTab = () => {
         setFullName(userData?.full_name);
         setBrandStage(Number(userData?.brand_stage));
       }
+
+
     };
 
 

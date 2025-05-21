@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "../../../lib/supabaseClient"; // Adjust if your client path is different
+import { fetchBrandStoryData , fetchWebsiteIntakeData, fetchDeploySite} from "@/app/utils/supabaseHelpers";
+
+
 
 const templates = [
   { id: "classic", name: "Classic", preview: "/templates/classic.png" },
@@ -14,6 +17,40 @@ const WebDesignIntake = ({ userId }) => {
   const [inspirationLink, setInspirationLink] = useState("");
   const [notes, setNotes] = useState("");
   const [loading, setLoading] = useState(false);
+  const [brandData, setBrandData] = useState({
+
+    character:'',
+    external_problem:'',
+    internal_problem:'',
+    philosophical_problem:'',
+    villain:'',
+    positive_outcomes:'',
+    plan:'',
+    empathy:'',
+    authority:'',
+    avoid_failure:'',
+  });
+  const [webDesignIntakeData, setWebDesignIntakeData] = useState({
+    selected_template: '',
+    logo_url: '',
+    wants_logo_help:'',
+    inspiration_link:'',
+    notes: '',
+
+  });
+
+  useEffect(() => {
+    if (brandData.character) {
+      console.log("Got brandData:", brandData);
+      console.log("Got webdesignintakeData:", webDesignIntakeData);
+      if (brandData.character && webDesignIntakeData.notes){
+        fetchDeploySite(brandData,webDesignIntakeData, userId)
+      }
+      // Do what you need to do once brandData is ready
+    }
+
+  }, [brandData, webDesignIntakeData]);
+
 
   const handleLogoUpload = (e) => {
     setLogoFile(e.target.files[0]);
@@ -68,6 +105,11 @@ const WebDesignIntake = ({ userId }) => {
       }
 
       alert("Design intake submitted successfully!");
+       const updatedBrandStory = await fetchBrandStoryData(userId)
+       setBrandData(updatedBrandStory);
+       const updatedwebIntake = await fetchWebsiteIntakeData(userId)
+       setWebDesignIntakeData(updatedwebIntake);
+
       setSelectedTemplate(null);
       setLogoFile(null);
       setWantsLogoHelp(false);
