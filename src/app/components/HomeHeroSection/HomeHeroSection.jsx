@@ -25,11 +25,11 @@ export default function HomeHeroSection() {
           build a professional, lead-generating website that grows your business.
         </p>
         <div className="cta-container">
-        <Link href="/Login">
+        {/* <Link href="/Login"> */}
           <button className="cta-button" >
             Get Started
           </button>
-        </Link>
+        {/* </Link> */}
 
         </div>
       </div>

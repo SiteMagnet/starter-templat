@@ -47,9 +47,9 @@ const PlanSection = () => {
         </div>
 
 
-        <Link href="/Login">
+        {/* <Link href="/Login"> */}
     <button className="cta-button">Get Started Today</button>
-  </Link>
+  {/* </Link> */}
 
       </div>
     </section>
