@@ -1,4 +1,5 @@
-import Image from "next/image";
+import fs from "fs";
+import path from "path";
 import HomeHeroSection from "../components/HomeHeroSection";
 import PastClients from "../components/PastClients";
 import KeyProblem from "../components/KeyProblem";
@@ -9,10 +10,25 @@ import Packages from "../components/Packages";
 import PersonalStory from "../components/PersonalStory";
 import FAQ from "../components/FAQ";
 import Reassurance from "../components/Reassurance";
+import ContentProvider from "../components/ContentProvider";
 
+export default async function Home() {
+  const filePath = path.join(process.cwd(), "content.json");
+  const fileContents = fs.readFileSync(filePath, "utf-8");
+  const content = JSON.parse(fileContents);
 
-export default function Home() {
   return (
-    <><HomeHeroSection/><PastClients/><KeyProblem/><Testimony/><Plan/><ClientShowcase/><Packages/><PersonalStory/><FAQ/><Reassurance/></>
+    <>
+      <HomeHeroSection content={content} />
+      <PastClients content={content} />
+      <KeyProblem content={content} />
+      <Testimony content={content} />
+      <Plan content={content.plan} />
+      <ClientShowcase />
+      <Packages content={content} />
+      <PersonalStory content={content} />
+      <FAQ/>
+      <Reassurance content={content} />
+    </>
   );
 }

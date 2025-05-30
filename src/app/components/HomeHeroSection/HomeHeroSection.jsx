@@ -4,9 +4,9 @@ import Link from 'next/link';
 import './HomeHeroSection.css';
 
 
-export default function HomeHeroSection() {
+export default function HomeHeroSection({content}) {
 
-
+console.log(content);
   return (
     <section className="hero">
       <video autoPlay loop muted playsInline className="hero-video">
