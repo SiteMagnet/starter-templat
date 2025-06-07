@@ -3,10 +3,10 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import './Navigation.css';
-
+import content from '../../../../content.json';
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const logo = content.logo_url;
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
   };

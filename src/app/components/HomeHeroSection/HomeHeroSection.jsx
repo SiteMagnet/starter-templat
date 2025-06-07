@@ -1,12 +1,13 @@
 'use client';
 import Link from 'next/link';
-
+import content from '../../../../content.json';
 import './HomeHeroSection.css';
 
 
 export default function HomeHeroSection({content}) {
 
 console.log(content);
+const hero = content.hero;
   return (
     <section className="hero">
       <video autoPlay loop muted playsInline className="hero-video">
@@ -18,11 +19,10 @@ console.log(content);
 
       <div className="hero-content">
         <h1 className="hero-heading">
-          Turn Your Website Into a High-Converting Lead Magnet
+          {hero.hero_heading}
         </h1>
         <p className="hero-subheading">
-          Are you struggling to convert visitors into clients? Let us help you
-          build a professional, lead-generating website that grows your business.
+          {hero.hero_subheading}
         </p>
         <div className="cta-container">
         {/* <Link href="/Login"> */}
