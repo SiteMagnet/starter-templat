@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import './Navigation.css';
 import content from '../../../../content.json';
-export default function Navigation() {
+export default function Navigation({name}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const logo = content.logo_url;
   const handleMenuToggle = () => {
@@ -15,7 +15,7 @@ export default function Navigation() {
     <nav className="navbar">
       <div className="navbar-left">
         <Link href="/">
-          <h1 className="brand">SiteMagnet</h1>
+          <h1 className="brand">{name}</h1>
         </Link>
       </div>
 

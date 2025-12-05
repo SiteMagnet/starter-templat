@@ -3,6 +3,7 @@ import "../globals.css";
 import Navigation from "../components/Navigation";
 import content from "../../../content.json";
 const seo = content.SEO;
+const name = content.hero.brand_name;
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -29,7 +30,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navigation />
+        <Navigation name={name} />
         {children}
       </body>
     </html>
